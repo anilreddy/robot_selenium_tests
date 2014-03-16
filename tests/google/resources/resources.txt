@@ -1,0 +1,27 @@
+*** Settings ***
+Documentation  This is a sample resource file which provides data to scenarios
+
+Library		Selenium2Library
+Library 	lib/utils.py
+
+*** Variables ***
+${SERVER}	google.com
+${URL}		http://${SERVER}/
+${DELAY}	1
+${BROWSER}	chrome
+
+*** Keywords ***
+I am on Google Page
+	Open Browser  ${URL}  ${BROWSER}
+	Maximize Browser Window
+	Set Selenium Speed  ${DELAY}
+	Title Should Be  Google
+
+I search with today's date
+	${date}=  get todays date
+	Input Text  q  ${date}
+
+click on search button
+	Click Button  btnG
+	Capture Page Screenshot  google.png
+	[Teardown]  Close Browser
