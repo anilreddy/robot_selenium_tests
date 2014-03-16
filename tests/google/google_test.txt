@@ -1,0 +1,12 @@
+*** Settings ***
+Documentation  	This is a sample scenario shows BDD using Selenium2Library which uses Robot Framework
+... 		searches today's date in google
+
+Resource		resources/resources.txt
+
+*** Test Cases ***
+
+Scenario:
+	Given I am on Google Page
+	When I search with today's date
+	And click on search button
