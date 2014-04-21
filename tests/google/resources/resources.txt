@@ -7,8 +7,9 @@ Library 	lib/utils.py
 *** Variables ***
 ${SERVER}	google.com
 ${URL}		http://${SERVER}/
-${DELAY}	1
-${BROWSER}	chrome
+${DELAY}	0
+${BROWSER}	firefox
+${SEARCH} 	Testing
 
 *** Keywords ***
 I am on Google Page
@@ -19,9 +20,22 @@ I am on Google Page
 
 I search with today's date
 	${date}=  get todays date
-	Input Text  q  ${date}
+	Input Text  q  ${SEARCH}
 
 click on search button
 	Click Button  btnG
 	Capture Page Screenshot  google.png
+	[Teardown]  Close Browser
+
+Search Using Google
+	I am on Google Page
+	[Arguments]  ${search_with}  ${contain}
+	Input Text  q  ${search_with}
+	Click Button  btnG
+	Wait Until Page Contains
+	...  ${contain}
+	...  timeout=10
+	...  error=Timed out
+	Page Should Contain  ${contain}
+	Capture Page Screenshot  ${search_with}.png
 	[Teardown]  Close Browser
