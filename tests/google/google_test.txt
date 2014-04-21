@@ -13,7 +13,7 @@ Scenario: Search Using Google
 
 Scenario: Search Using Google with multiple test data
 	[Documentation]		This is a sample test case which shows
-	... 				Data Driven Testing using Robot Framework
+	... 			Data Driven Testing using Robot Framework
 
 	[Template]  Search Using Google
 	Selenium  Selenium - Web Browser Automation
