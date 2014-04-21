@@ -6,7 +6,17 @@ Resource		resources/resources.txt
 
 *** Test Cases ***
 
-Scenario:
+Scenario: Search Using Google
 	Given I am on Google Page
 	When I search with today's date
 	And click on search button
+
+Scenario: Search Using Google with multiple test data
+	[Documentation]		This is a sample test case which shows
+	... 				Data Driven Testing using Robot Framework
+
+	[Template]  Search Using Google
+	Selenium  Selenium - Web Browser Automation
+	QTP  QTP Tutorial - Tutorials Point
+	Prokarma  Prokarma Softech
+	Microsoft  Microsoft India
